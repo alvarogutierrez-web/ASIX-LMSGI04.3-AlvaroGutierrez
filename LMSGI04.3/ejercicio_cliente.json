@@ -1,0 +1,37 @@
+{
+  "cliente": [
+    {
+      "cust_id": 1,
+      "cust_type_cd": "I",
+      "direccion": "47 Mockingbird Ln",
+      "ciudad": "Lynnfield",
+      "fed_id": "111-11-1111",
+      "codigo_postal": "01940",
+      "estado": "MA",
+      "first_name_ind": "James",
+      "last_name_ind": "Hadley",
+      "birth_date": "1972-04-22"
+    },
+    {
+      "cust_id": 10,
+      "cust_type_cd": "B",
+      "direccion": "43 State St",
+      "ciudad": "Lynn",
+      "fed_id": "04-1111111",
+      "codigo_postal": "01901",
+      "estado": "NH",
+      "nombre": "Chilton Engineering",
+      "state_id": "12-345-678",
+      "incorp_date": "1995-05-01",
+      "oficial": [
+        {
+          "oficial_id": 1,
+          "first_name_off": "John",
+          "last_name_off": "Chilton",
+          "start_date": "1995-05-01",
+          "titulo": "Presidente"
+        }
+      ]
+    }
+  ]
+}

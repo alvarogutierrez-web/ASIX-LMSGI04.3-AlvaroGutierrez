@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Esquema de Clientes",
+  "type": "object",
+  "required": ["cliente"],
+  "properties": {
+    "cliente": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["cust_id", "fed_id", "cust_type_cd"],
+        "properties": {
+          "cust_id": { "type": "integer" },
+          "cust_type_cd": { "type": "string", "enum": ["I", "B"] },
+          "direccion": { "type": "string" },
+          "ciudad": { "type": "string" },
+          "fed_id": { "type": "string" },
+          "codigo_postal": { "type": "string" },
+          "estado": { "type": "string", "enum": ["MA", "NH", "RI", "VE", "CN", "NY"] },
+          "first_name_ind": { "type": "string" },
+          "last_name_ind": { "type": "string" },
+          "birth_date": { "type": "string", "format": "date" },
+          "nombre": { "type": "string" },
+          "state_id": { "type": "string" },
+          "incorp_date": { "type": "string", "format": "date" },
+          "oficial": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": ["oficial_id", "first_name_off", "last_name_off"],
+              "properties": {
+                "oficial_id": { "type": "integer" },
+                "first_name_off": { "type": "string" },
+                "last_name_off": { "type": "string" },
+                "start_date": { "type": "string", "format": "date" },
+                "end_date": { "type": "string", "format": "date" },
+                "titulo": { "type": "string", "enum": ["Presidente", "CEO"] }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "if": { "properties": { "cust_type_cd": { "const": "I" } } },
+            "then": { "required": ["first_name_ind", "last_name_ind"] }
+          },
+          {
+            "if": { "properties": { "cust_type_cd": { "const": "B" } } },
+            "then": { "required": ["nombre", "state_id", "oficial"] }
+          }
+        ]
+      }
+    }
+  },
+  "additionalProperties": false
+}
